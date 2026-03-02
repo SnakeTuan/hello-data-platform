@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/triggerer/triggerer-poddisruptionbudget.yaml
-################################
-## Airflow Triggerer PodDisruptionBudget
-#################################

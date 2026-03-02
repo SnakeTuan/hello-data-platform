@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/rbac/security-context-constraint-rolebinding.yaml
-###########################
-## Airflow SCC Role Binding
-###########################

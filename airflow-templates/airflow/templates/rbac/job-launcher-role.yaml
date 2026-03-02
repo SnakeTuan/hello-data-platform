@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/rbac/job-launcher-role.yaml
-################################
-## Airflow Job Launcher Role
-#################################

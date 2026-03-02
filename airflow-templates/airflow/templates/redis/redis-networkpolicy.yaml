@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/redis/redis-networkpolicy.yaml
-################################
-## Airflow Redis NetworkPolicy
-#################################

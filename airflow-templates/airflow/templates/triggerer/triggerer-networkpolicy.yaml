@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/triggerer/triggerer-networkpolicy.yaml
-##################################
-## Airflow triggerer NetworkPolicy
-##################################

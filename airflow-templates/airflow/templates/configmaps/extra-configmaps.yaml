@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/configmaps/extra-configmaps.yaml
-####################################################
-## Extra ConfigMaps provisioned via the chart values
-####################################################

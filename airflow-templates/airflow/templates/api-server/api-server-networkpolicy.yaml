@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/api-server/api-server-networkpolicy.yaml
-################################
-## Airflow API Server NetworkPolicy
-#################################

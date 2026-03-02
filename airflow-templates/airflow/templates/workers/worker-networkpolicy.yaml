@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/workers/worker-networkpolicy.yaml
-################################
-## Airflow Worker NetworkPolicy
-#################################

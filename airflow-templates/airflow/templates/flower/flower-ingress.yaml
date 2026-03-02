@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/flower/flower-ingress.yaml
-################################
-## Airflow Flower Ingress
-#################################

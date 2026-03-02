@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/limitrange.yaml
-################################
-## Airflow Namespace LimitRange
-#################################

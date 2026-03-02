@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/resourcequota.yaml
-################################
-## Airflow Namespace ResourceQuota
-#################################

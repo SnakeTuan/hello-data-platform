@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/cleanup/cleanup-cronjob.yaml
-################################
-## Airflow Cleanup Pods CronJob
-#################################

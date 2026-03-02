@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/pgbouncer/pgbouncer-service.yaml
-################################
-## Airflow Pgbouncer Service
-#################################

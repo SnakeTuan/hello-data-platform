@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/pgbouncer/pgbouncer-poddisruptionbudget.yaml
-################################
-## Pgbouncer PodDisruptionBudget
-#################################

@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/workers/worker-poddisruptionbudget.yaml
-################################
-## Airflow Worker PodDisruptionBudget
-#################################

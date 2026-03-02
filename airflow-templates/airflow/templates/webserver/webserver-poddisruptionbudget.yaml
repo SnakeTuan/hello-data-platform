@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/webserver/webserver-poddisruptionbudget.yaml
-################################
-## Airflow Webserver PodDisruptionBudget
-#################################

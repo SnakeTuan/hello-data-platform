@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/webserver/webserver-hpa.yaml
-################################
-## Airflow Webserver HPA
-#################################

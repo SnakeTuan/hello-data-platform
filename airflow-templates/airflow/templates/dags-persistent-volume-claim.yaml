@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/dags-persistent-volume-claim.yaml
-######################################
-## Airflow DAGs PersistentVolumeClaim
-######################################

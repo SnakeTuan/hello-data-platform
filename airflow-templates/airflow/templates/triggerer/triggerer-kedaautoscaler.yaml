@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/triggerer/triggerer-kedaautoscaler.yaml
-################################
-## Airflow Triggerer KEDA Scaler
-#################################

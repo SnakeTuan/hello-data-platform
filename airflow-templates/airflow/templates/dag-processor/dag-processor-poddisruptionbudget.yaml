@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/dag-processor/dag-processor-poddisruptionbudget.yaml
-################################
-## Airflow Dag Processor PodDisruptionBudget
-#################################

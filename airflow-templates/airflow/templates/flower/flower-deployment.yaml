@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/flower/flower-deployment.yaml
-################################
-## Airflow Flower Deployment
-#################################

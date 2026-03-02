@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/scheduler/scheduler-networkpolicy.yaml
-################################
-## Airflow Scheduler NetworkPolicy
-#################################

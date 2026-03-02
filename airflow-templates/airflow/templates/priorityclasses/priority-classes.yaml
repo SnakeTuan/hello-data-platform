@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/priorityclasses/priority-classes.yaml
-#################################################
-## Priority classes provisioned via the chart values
-#################################################

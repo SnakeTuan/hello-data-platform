@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/workers/worker-kedaautoscaler.yaml
-################################
-## Airflow Worker KEDA Scaler
-#################################

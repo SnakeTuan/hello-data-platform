@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/rbac/pod-cleanup-role.yaml
-################################
-## Airflow Cleanup Role
-#################################

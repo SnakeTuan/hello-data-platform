@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/flower/flower-networkpolicy.yaml
-################################
-## Airflow Flower NetworkPolicy
-#################################

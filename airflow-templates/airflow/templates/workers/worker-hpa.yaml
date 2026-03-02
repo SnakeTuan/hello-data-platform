@@ -1,5 +1,0 @@
----
-# Source: airflow/templates/workers/worker-hpa.yaml
-################################
-## Airflow Worker HPA
-#################################
