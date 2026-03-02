@@ -18,5 +18,11 @@ output "port_forward_commands" {
     # Unity Catalog API (http://localhost:8070)
     kubectl port-forward svc/unity-catalog 8070:8080 -n unity-catalog
 
+    # unity catalog UI
+    kubectl port-forward svc/unity-catalog-ui 3000:3000 -n unity-catalog
+
+    # JupyterHub (http://localhost:8888)
+    kubectl port-forward svc/proxy-public 8888:80 -n jupyterhub
+
   EOT
 }

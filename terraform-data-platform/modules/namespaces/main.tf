@@ -33,3 +33,9 @@ resource "kubernetes_namespace" "unity_catalog" {
     name = "unity-catalog"
   }
 }
+
+resource "kubernetes_namespace" "jupyterhub" {
+  metadata {
+    name = "jupyterhub"
+  }
+}

@@ -36,3 +36,9 @@ module "unity_catalog" {
 
   depends_on = [module.namespaces]
 }
+
+module "jupyterhub" {
+  source = "./modules/jupyterhub"
+
+  depends_on = [module.namespaces]
+}

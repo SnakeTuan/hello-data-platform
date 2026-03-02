@@ -1,0 +1,35 @@
+hub:
+  config:
+    JupyterHub:
+      authenticator_class: dummy
+    DummyAuthenticator:
+      password: "password"
+    Authenticator:
+      admin_users:
+        - tuantm
+
+singleuser:
+  # PySpark image from quay.io (avoids Docker Hub rate limits)
+  image:
+    name: quay.io/jupyter/pyspark-notebook
+    tag: "latest"
+
+  # No persistent storage for now (can add later)
+  storage:
+    type: none
+
+  # Inject MinIO and Unity Catalog connection info into every notebook
+  extraEnv:
+    MINIO_ENDPOINT: "http://minio.minio.svc.cluster.local:9000"
+    MINIO_ACCESS_KEY: "admin"
+    MINIO_SECRET_KEY: "admin123456"
+    UNITY_CATALOG_ENDPOINT: "http://unity-catalog.unity-catalog.svc.cluster.local:8080"
+
+proxy:
+  service:
+    type: ClusterIP
+
+# Disable user scheduler (not needed for single user)
+scheduling:
+  userScheduler:
+    enabled: false
