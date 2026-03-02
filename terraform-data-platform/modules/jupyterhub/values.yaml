@@ -18,12 +18,16 @@ singleuser:
   storage:
     type: none
 
+  # Disable network policies (allow notebook pods to reach cluster services)
+  networkPolicy:
+    enabled: false
+
   # Inject MinIO and Unity Catalog connection info into every notebook
   extraEnv:
     MINIO_ENDPOINT: "http://minio.minio.svc.cluster.local:9000"
     MINIO_ACCESS_KEY: "admin"
     MINIO_SECRET_KEY: "admin123456"
-    UNITY_CATALOG_ENDPOINT: "http://unity-catalog.unity-catalog.svc.cluster.local:8080"
+    UNITY_CATALOG_ENDPOINT: "http://server.unity-catalog.svc.cluster.local:8080"
 
 proxy:
   service:

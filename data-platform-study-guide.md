@@ -1072,3 +1072,27 @@ kubectl port-forward svc/unity-catalog 8081:8081 -n unity-catalog &
 | MinIO Console | http://localhost:9001 | admin / password123 |
 | Airbyte UI | http://localhost:8000 | (set on first login) |
 | Unity Catalog UI | http://localhost:8081 | (no auth in dev) |
+
+
+# using s3 instead of minio:
+  2. Create an S3 bucket:
+  Bucket name: tuantm-warehouse (or whatever you like)
+  Region: ap-southeast-1 (nearest to Vietnam)
+
+  3. Create an IAM user for UC:
+  - Go to IAM → Users → Create User
+  - Attach policy: AmazonS3FullAccess (for testing, scope it down later)
+  - Create Access Key → get Access Key ID + Secret Access Key
+
+  4. Create an IAM Role for UC credential vending:
+  - Go to IAM → Roles → Create Role
+  - Trusted entity: Same AWS account
+  - Policy: AmazonS3FullAccess
+  - Note the Role ARN: arn:aws:iam::<account-id>:role/<role-name>
+
+  Then I'll update the UC server config with:
+  - aws.masterRoleArn = the IAM role ARN
+  - aws.accessKey / aws.secretKey = the IAM user credentials
+  - aws.region = ap-southeast-1
+  - s3.bucketPath.0 = s3://tuantm-warehouse
+  - s3.awsRoleArn.0 = the same role ARN
