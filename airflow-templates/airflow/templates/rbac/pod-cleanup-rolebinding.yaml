@@ -1,0 +1,5 @@
+---
+# Source: airflow/templates/rbac/pod-cleanup-rolebinding.yaml
+################################
+## Airflow Cleanup Role Binding
+#################################

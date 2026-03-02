@@ -1,0 +1,5 @@
+---
+# Source: airflow/templates/logs-persistent-volume-claim.yaml
+######################################
+## Airflow LOGs PersistentVolumeClaim
+######################################

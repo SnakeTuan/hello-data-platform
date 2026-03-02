@@ -1,0 +1,5 @@
+---
+# Source: airflow/templates/scheduler/scheduler-poddisruptionbudget.yaml
+################################
+## Airflow Scheduler PodDisruptionBudget
+#################################

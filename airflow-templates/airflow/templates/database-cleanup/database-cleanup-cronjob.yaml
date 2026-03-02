@@ -1,0 +1,5 @@
+---
+# Source: airflow/templates/database-cleanup/database-cleanup-cronjob.yaml
+################################
+## Airflow Database Cleanup CronJob
+#################################

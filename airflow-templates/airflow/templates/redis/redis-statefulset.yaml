@@ -1,0 +1,82 @@
+---
+# Source: airflow/templates/redis/redis-statefulset.yaml
+################################
+## Airflow Redis StatefulSet
+#################################
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: airflow-redis
+  labels:
+    tier: airflow
+    component: redis
+    release: airflow
+    chart: "airflow-1.19.0"
+    heritage: Helm
+spec:
+  serviceName: airflow-redis
+  selector:
+    matchLabels:
+      tier: airflow
+      component: redis
+      release: airflow
+  template:
+    metadata:
+      labels:
+        tier: airflow
+        component: redis
+        release: airflow
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+    spec:
+      nodeSelector:
+        {}
+      affinity:
+        {}
+      tolerations:
+        []
+      topologySpreadConstraints:
+        []
+      terminationGracePeriodSeconds: 600
+      serviceAccountName: "airflow-redis"
+      imagePullSecrets: 
+        []
+      securityContext: 
+        runAsUser: 0
+      containers:
+        - name: redis
+          image: redis:7.2-bookworm
+          imagePullPolicy: IfNotPresent
+          securityContext: 
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          command: ["redis-server"]
+          resources:
+            {}
+          # Not launching via shell -- parentheses are required
+          # https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#use-environment-variables-to-define-arguments
+          args: ["--requirepass", "$(REDIS_PASSWORD)"]
+          ports:
+            - name: redis-db
+              containerPort: 6379
+          volumeMounts:
+            - name: redis-db
+              mountPath: /data
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-redis-password
+                  key: password
+  volumeClaimTemplates:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: redis-db
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi

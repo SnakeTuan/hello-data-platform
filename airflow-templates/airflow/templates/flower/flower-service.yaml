@@ -1,0 +1,5 @@
+---
+# Source: airflow/templates/flower/flower-service.yaml
+################################
+## Airflow Flower Service Component
+#################################

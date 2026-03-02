@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: default
+spec:
+  replicas: 3             # always keep 3 pods running
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"   # 100 millicores = 0.1 CPU
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

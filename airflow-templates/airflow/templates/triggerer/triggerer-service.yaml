@@ -1,0 +1,26 @@
+---
+# Source: airflow/templates/triggerer/triggerer-service.yaml
+################################
+## Airflow triggerer Service
+#################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: airflow-triggerer
+  labels:
+    tier: airflow
+    component: triggerer
+    release: airflow
+    chart: "airflow-1.19.0"
+    heritage: Helm
+spec:
+  clusterIP: None
+  selector:
+    tier: airflow
+    component: triggerer
+    release: airflow
+  ports:
+    - name: triggerer-logs
+      protocol: TCP
+      port: 8794
+      targetPort: 8794

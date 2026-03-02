@@ -1,0 +1,14 @@
+global:
+  edition: community
+
+webapp:
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+
+server:
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
