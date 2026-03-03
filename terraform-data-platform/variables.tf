@@ -17,3 +17,10 @@ variable "airflow_admin_password" {
   default     = "admin"
   sensitive   = true
 }
+
+variable "keycloak_admin_password" {
+  description = "Keycloak admin password"
+  type        = string
+  default     = "admin123456"
+  sensitive   = true
+}

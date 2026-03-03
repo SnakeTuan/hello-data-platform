@@ -24,5 +24,8 @@ output "port_forward_commands" {
     # JupyterHub (http://localhost:8888)
     kubectl port-forward svc/proxy-public 8888:80 -n jupyterhub
 
+    # keycloak 
+    kubectl port-forward -n keycloak svc/keycloak 8090:80
+
   EOT
 }

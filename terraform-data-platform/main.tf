@@ -42,3 +42,11 @@ module "jupyterhub" {
 
   depends_on = [module.namespaces]
 }
+
+module "keycloak" {
+  source = "./modules/keycloak"
+
+  admin_password = var.keycloak_admin_password
+
+  depends_on = [module.namespaces]
+}

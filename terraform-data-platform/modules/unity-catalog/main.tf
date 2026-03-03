@@ -75,9 +75,17 @@ resource "kubernetes_config_map" "unity_catalog_config" {
   data = {
     "server.properties" = <<-EOT
       server.env=dev
-      server.authorization=disable
+      server.authorization=enable
       server.cookie-timeout=P5D
       server.managed-table.enabled=false
+
+      ## OAuth / Keycloak config
+      ## authorization-url và token-url dùng cho UI login flow (khi UI hỗ trợ Keycloak)
+      ## Token exchange endpoint tự fetch OIDC discovery từ iss trong JWT
+      server.authorization-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/auth
+      server.token-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/token
+      server.client-id=unity-catalog
+      server.client-secret=unity-catalog-secret
 
       ## S3/MinIO Storage Config (all fields required for UC to recognize the bucket)
       s3.bucketPath.0=s3://warehouse
