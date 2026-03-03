@@ -22,11 +22,9 @@ singleuser:
   networkPolicy:
     enabled: false
 
-  # Inject MinIO and Unity Catalog connection info into every notebook
+  # Inject Unity Catalog connection info into every notebook
+  # S3 credentials are vended by UC — no need to put AWS keys here
   extraEnv:
-    MINIO_ENDPOINT: "http://minio.minio.svc.cluster.local:9000"
-    MINIO_ACCESS_KEY: "admin"
-    MINIO_SECRET_KEY: "admin123456"
     UNITY_CATALOG_ENDPOINT: "http://server.unity-catalog.svc.cluster.local:8080"
 
 proxy:

@@ -75,24 +75,21 @@ resource "kubernetes_config_map" "unity_catalog_config" {
   data = {
     "server.properties" = <<-EOT
       server.env=dev
-      server.authorization=enable
+      server.authorization=disable
       server.cookie-timeout=P5D
       server.managed-table.enabled=false
 
-      ## OAuth / Keycloak config
-      ## authorization-url và token-url dùng cho UI login flow (khi UI hỗ trợ Keycloak)
-      ## Token exchange endpoint tự fetch OIDC discovery từ iss trong JWT
-      server.authorization-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/auth
-      server.token-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/token
-      server.client-id=unity-catalog
-      server.client-secret=unity-catalog-secret
+      ## OAuth / Keycloak config (disabled for demo, re-enable when ready)
+      ## server.authorization-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/auth
+      ## server.token-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/token
+      ## server.client-id=unity-catalog
+      ## server.client-secret=unity-catalog-secret
 
-      ## S3/MinIO Storage Config (all fields required for UC to recognize the bucket)
-      s3.bucketPath.0=s3://warehouse
-      s3.region.0=us-east-1
-      s3.awsRoleArn.0=arn:aws:iam::000000000000:role/minio
-      s3.accessKey.0=admin
-      s3.secretKey.0=admin123456
+      ## S3 Storage Config (AWS)
+      s3.bucketPath.0=s3://tuantm-data-platform
+      s3.region.0=ap-southeast-1
+      s3.accessKey.0=
+      s3.secretKey.0=
       s3.sessionToken.0=
     EOT
   }
@@ -129,15 +126,9 @@ resource "kubernetes_deployment" "unity_catalog" {
             container_port = 8080
           }
 
-          # AWS SDK env vars to redirect S3 calls to MinIO
-          env {
-            name  = "AWS_ENDPOINT_URL_S3"
-            value = "http://minio.minio.svc.cluster.local:9000"
-          }
-
           env {
             name  = "AWS_REGION"
-            value = "us-east-1"
+            value = "ap-southeast-1"
           }
 
           volume_mount {
