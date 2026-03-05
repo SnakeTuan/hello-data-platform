@@ -2,14 +2,6 @@ module "namespaces" {
   source = "./modules/namespaces"
 }
 
-module "minio" {
-  source = "./modules/minio"
-
-  root_user     = var.minio_root_user
-  root_password = var.minio_root_password
-
-  depends_on = [module.namespaces]
-}
 
 module "airflow" {
   source = "./modules/airflow"
@@ -33,6 +25,15 @@ module "airbyte" {
 
 module "unity_catalog" {
   source = "./modules/unity-catalog"
+
+  aws_access_key    = var.aws_access_key
+  aws_secret_key    = var.aws_secret_key
+  aws_region        = var.aws_region
+  s3_bucket_name    = var.s3_bucket_name
+  aws_session_token = var.aws_session_token
+  aws_role_arn      = var.aws_role_arn
+  keycloak_uc_client_id     = var.keycloak_uc_client_id
+  keycloak_uc_client_secret = var.keycloak_uc_client_secret
 
   depends_on = [module.namespaces]
 }

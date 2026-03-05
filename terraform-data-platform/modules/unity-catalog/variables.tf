@@ -1,26 +1,11 @@
-
-variable "airflow_admin_password" {
-  description = "Airflow web UI admin password"
-  type        = string
-  default     = "admin"
-  sensitive   = true
-}
-
-variable "keycloak_admin_password" {
-  description = "Keycloak admin password"
-  type        = string
-  default     = "admin123456"
-  sensitive   = true
-}
-
 variable "aws_access_key" {
-  description = "AWS access key for S3 storage (Unity Catalog + Spark)"
+  description = "AWS access key for S3 storage"
   type        = string
   sensitive   = true
 }
 
 variable "aws_secret_key" {
-  description = "AWS secret key for S3 storage (Unity Catalog + Spark)"
+  description = "AWS secret key for S3 storage"
   type        = string
   sensitive   = true
 }

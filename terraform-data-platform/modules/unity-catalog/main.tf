@@ -75,22 +75,24 @@ resource "kubernetes_config_map" "unity_catalog_config" {
   data = {
     "server.properties" = <<-EOT
       server.env=dev
-      server.authorization=disable
+      server.authorization=enable
       server.cookie-timeout=P5D
-      server.managed-table.enabled=false
+      server.managed-table.enabled=true
 
-      ## OAuth / Keycloak config (disabled for demo, re-enable when ready)
-      ## server.authorization-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/auth
-      ## server.token-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/token
-      ## server.client-id=unity-catalog
-      ## server.client-secret=unity-catalog-secret
+      ## OAuth / Keycloak config
+      server.authorization-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/auth
+      server.token-url=http://keycloak.keycloak.svc.cluster.local/realms/data-platform/protocol/openid-connect/token
+      server.client-id=${var.keycloak_uc_client_id}
+      server.client-secret=${var.keycloak_uc_client_secret}
 
       ## S3 Storage Config (AWS)
-      s3.bucketPath.0=s3://tuantm-data-platform
-      s3.region.0=ap-southeast-1
-      s3.accessKey.0=
-      s3.secretKey.0=
-      s3.sessionToken.0=
+      ## UC vends temporary credentials to Spark — no sessionToken needed for IAM user creds
+      s3.bucketPath.0=s3://${var.s3_bucket_name}
+      s3.region.0=${var.aws_region}
+      s3.accessKey.0=${var.aws_access_key}
+      s3.secretKey.0=${var.aws_secret_key}
+      s3.sessionToken.0=${var.aws_session_token}
+      s3.awsRoleArn.0=${var.aws_role_arn}
     EOT
   }
 }
@@ -128,7 +130,17 @@ resource "kubernetes_deployment" "unity_catalog" {
 
           env {
             name  = "AWS_REGION"
-            value = "ap-southeast-1"
+            value = var.aws_region
+          }
+
+          env {
+            name  = "AWS_ACCESS_KEY_ID"
+            value = var.aws_access_key
+          }
+
+          env {
+            name  = "AWS_SECRET_ACCESS_KEY"
+            value = var.aws_secret_key
           }
 
           volume_mount {

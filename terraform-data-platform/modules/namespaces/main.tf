@@ -16,11 +16,6 @@ resource "kubernetes_namespace" "spark_jobs" {
   }
 }
 
-resource "kubernetes_namespace" "minio" {
-  metadata {
-    name = "minio"
-  }
-}
 
 resource "kubernetes_namespace" "airbyte" {
   metadata {
