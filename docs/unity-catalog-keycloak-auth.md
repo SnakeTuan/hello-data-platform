@@ -217,6 +217,7 @@ UC_ADMIN_TOKEN=$(kubectl exec -n unity-catalog \
 
 echo "UC admin token: ${UC_ADMIN_TOKEN:0:50}..."
 ```
+hoajcw UC_ADMIN_TOKEN=$(cat etc/conf/token.txt)
 
 ### Bước 6: Đăng ký user trong UC database
 
